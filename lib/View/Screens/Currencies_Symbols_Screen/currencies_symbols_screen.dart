@@ -46,7 +46,6 @@ class CurrenciesSymbolsScreen extends StatelessWidget {
                       splashColor: AppColors.MAIN_COLOR,
                       onTap: () {
                         twoCurrenciesConverterController.selectCurrency(symbol.code);
-
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),

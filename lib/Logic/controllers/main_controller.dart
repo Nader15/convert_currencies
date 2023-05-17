@@ -1,7 +1,7 @@
 import 'package:convert_currencies/Utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../View/Screens/Currencies_Fluctuation_Screen/currencies_fluctuation_screen.dart';
 import '../../View/Screens/Two_Currencies_Converter_Screen/two_currencies_converter_screen.dart';
 
 class MainController extends GetxController {
@@ -10,11 +10,7 @@ class MainController extends GetxController {
   var appBarTitle = ''.obs;
   final tabs = [
     TwoCurrenciesConverterScreen(),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: AppColors.BLACK_COLOR,
-    ),
+    CurrenciesFluctuationScreen(),
   ].obs;
 
   @override

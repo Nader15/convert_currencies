@@ -3,6 +3,8 @@ import 'package:convert_currencies/Services/app_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'currencies_fluctuation_controller.dart';
+
 class TwoCurrenciesConverterController extends GetxController {
   @override
   void onInit() async {
@@ -23,10 +25,13 @@ class TwoCurrenciesConverterController extends GetxController {
   var toCurrencyNameSelected = false.obs;
 
   void selectCurrency(String value) {
+    final currenciesFluctuationController = Get.find<CurrenciesFluctuationController>();
     if (fromCurrencyNameSelected.value) fromCurrencyName.value = value;
     if (toCurrencyNameSelected.value) toCurrencyName.value = value;
     Get.back();
     getCurrenciesConverter();
+    currenciesFluctuationController.paginatedCurrenciesFluctuation.clear();
+    currenciesFluctuationController.getCurrenciesFluctuation();
   }
 
   getCurrenciesConverter() async {

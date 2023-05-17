@@ -2,8 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../Logic/controllers/currencies_fluctuation_controller.dart';
+import '../Models/currencies_fluctuation_model.dart';
 import '../Models/currencies_symbols_model.dart';
 import '../Models/two_currencies_converter_model.dart';
 import '../Utils/app_constants.dart';
@@ -32,8 +35,7 @@ class AppServices {
 
   Future<CurrenciesSymbolsModel> getCurrenciesSymbols() async {
     var response = await http.get(
-      Uri.parse(
-          "${AppConstants.BASE_URL}/symbols"),
+      Uri.parse("${AppConstants.BASE_URL}/symbols"),
     );
     var jsonData = response.body;
     var decodedData = jsonDecode(jsonData);
@@ -43,6 +45,26 @@ class AppServices {
     } else {
       log("Currencies Symbols Error --> $decodedData");
       return currenciesSymbolsModelFromJson(jsonData);
+    }
+  }
+
+  Future<CurrenciesFluctuationModel> getCurrenciesFluctuation({
+    required String currency,
+    required String startDate,
+    required String endDate,
+  }) async {
+    var response = await http.get(
+      Uri.parse(
+          "${AppConstants.BASE_URL}/fluctuation?start_date=$startDate&end_date=$endDate&base=$currency"),
+    );
+    var jsonData = response.body;
+    var decodedData = jsonDecode(jsonData);
+    if (decodedData['success']) {
+      log("Currencies Fluctuation Success --> $decodedData");
+      return currenciesFluctuationModelFromJson(jsonData);
+    } else {
+      log("Currencies Fluctuation Error --> $decodedData");
+      return currenciesFluctuationModelFromJson(jsonData);
     }
   }
 }
