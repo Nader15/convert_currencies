@@ -1,17 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
-import '../Logic/controllers/currencies_fluctuation_controller.dart';
 import '../Models/currencies_fluctuation_model.dart';
 import '../Models/currencies_symbols_model.dart';
 import '../Models/two_currencies_converter_model.dart';
 import '../Utils/app_constants.dart';
 
 class AppServices {
+  final http.Client httpClient;
+
+  AppServices({http.Client? httpClient})
+      : httpClient = httpClient ?? http.Client();
   Future<TwoCurrenciesConverterModel> getCurrenciesConverter({
     required double amount,
     required String date,
