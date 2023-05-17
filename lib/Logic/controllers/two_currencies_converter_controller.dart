@@ -30,6 +30,7 @@ class TwoCurrenciesConverterController extends GetxController {
     if (toCurrencyNameSelected.value) toCurrencyName.value = value;
     Get.back();
     getCurrenciesConverter();
+    currenciesFluctuationController.pageNumber = 1;
     currenciesFluctuationController.paginatedCurrenciesFluctuation.clear();
     currenciesFluctuationController.getCurrenciesFluctuation();
   }

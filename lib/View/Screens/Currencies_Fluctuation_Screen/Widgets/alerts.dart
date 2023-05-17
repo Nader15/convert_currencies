@@ -37,6 +37,7 @@ class Alerts {
               onChange: (DateTime newDate, _) {
                 currenciesFluctuationController.selectedStartDate.value =
                     DateFormat('yyyy-MM-dd').format(newDate);
+                currenciesFluctuationController.pageNumber = 1;
                 currenciesFluctuationController.paginatedCurrenciesFluctuation
                     .clear();
                 currenciesFluctuationController.getCurrenciesFluctuation();
@@ -106,6 +107,7 @@ class Alerts {
                 currenciesFluctuationController.selectedEndDate.value =
                     DateFormat('yyyy-MM-dd').format(newDate);
                 currenciesFluctuationController.paginatedCurrenciesFluctuation.clear();
+                currenciesFluctuationController.pageNumber = 1;
                 currenciesFluctuationController.getCurrenciesFluctuation();
               },
               pickerTheme: const DateTimePickerTheme(

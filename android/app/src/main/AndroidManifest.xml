@@ -2,7 +2,7 @@
     package="com.nadersala7.convert_currencies">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="convert_currencies"
+        android:label="Currencies"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
